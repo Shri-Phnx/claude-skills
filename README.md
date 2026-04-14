@@ -9,6 +9,7 @@ Each skill is a self-contained `SKILL.md` file that teaches Claude how to handle
 
 | Skill | Path | Framework | Purpose |
 |---|---|---|---|
+| rtcfrr-prompt-builder | `skills/rtcfrr-prompt-builder/` | R·T·C·F·R·R | Build structured AI prompts for any professional deliverable — CV, LinkedIn, outreach, CareerForge |
 | json-prompt-builder | `skills/json-prompt-builder/` | R·T·C·S·F·R·E·V | Build JSON prompts for AI workflows, n8n nodes, and automation pipelines |
 
 ---
@@ -35,7 +36,7 @@ claude-skills/
 
 ## Frameworks Used
 
-- **RTCFRR** — Role · Task · Context · Format · Rules · Review (universal prompt framework)
+- **R·T·C·F·R·R** — Role · Task · Context · Format · Rules · Review (universal prompt framework)
 - **R·T·C·S·F·R·E·V** — Extended for JSON/structured output tasks
 
 ---
