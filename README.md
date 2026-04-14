@@ -1,4 +1,4 @@
-# Claude Skills — by Sparx
+# Claude Skills — by Shrinivas
 
 A growing library of reusable Claude skills built on structured prompt frameworks.
 Each skill is a self-contained `SKILL.md` file that teaches Claude how to handle a specific class of tasks with precision and consistency.
@@ -41,4 +41,4 @@ claude-skills/
 
 ---
 
-*Maintained by Sparx | Built for CareerForge automations, n8n workflows, and AI agent pipelines.*
+*Maintained by Shrinivas | Built for CareerForge automations, n8n workflows, and AI agent pipelines.*

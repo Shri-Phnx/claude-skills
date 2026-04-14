@@ -138,9 +138,9 @@ After delivering, ask: *"Would you like to adjust any section — Role, Format, 
 
 ---
 
-## Sparx-specific defaults (apply when context matches)
+## Shrinivas-specific defaults (apply when context matches)
 
-These are pre-set defaults for Shrinivas Ramaprasad ("Sparx") use cases. Apply when the context clearly maps:
+These are pre-set defaults for Shrinivas Ramaprasad use cases. Apply when the context clearly maps:
 
 | Use case | ROLE default | FORMAT defaults |
 |---|---|---|
@@ -149,7 +149,7 @@ These are pre-set defaults for Shrinivas Ramaprasad ("Sparx") use cases. Apply w
 | Recruiter outreach | Job seeker with ITAM/ITSM/ServiceNow expertise targeting UAE market | British English, 300-character limit, no AI-sounding phrases |
 | CareerForge content | Career coach targeting professionals aged 25–40 | British English, BuzzFeed-style hook, Instagram or LinkedIn format |
 
-**Always apply across all Sparx outputs:**
+**Always apply across all Shrinivas outputs:**
 - British English (spell: "totalling", "organisation", "specialising")
 - Never add SAFe or SOX
 - Always include Generative AI and Prompt Engineering in skills sections

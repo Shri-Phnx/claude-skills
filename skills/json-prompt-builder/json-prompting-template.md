@@ -1,5 +1,5 @@
 # JSON Prompting Master Template
-### Built on the R·T·C·S·F·R·E·V Framework — by Sparx / CareerForge
+### Built on the R·T·C·S·F·R·E·V Framework — by Shrinivas / CareerForge
 
 > **What is R·T·C·S·F·R·E·V?**
 > An extension of the RTCFRR prompt framework, purpose-built for JSON output tasks.
@@ -249,4 +249,4 @@ messages = [
 | Trailing commas | Add "No trailing commas" |
 
 ---
-*Template v1.0 | R·T·C·S·F·R·E·V Framework | Author: Sparx | CareerForge*
+*Template v1.0 | R·T·C·S·F·R·E·V Framework | Author: Shrinivas | CareerForge*

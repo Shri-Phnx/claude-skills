@@ -269,9 +269,9 @@ Original input: [original_input]
 
 ---
 
-## Sparx-Specific Defaults
+## Shrinivas-Specific Defaults
 
-Apply these when building JSON prompts for Sparx's workflows:
+Apply these when building JSON prompts for Shrinivas's workflows:
 
 | Workflow | Variant | Notes |
 |---|---|---|
