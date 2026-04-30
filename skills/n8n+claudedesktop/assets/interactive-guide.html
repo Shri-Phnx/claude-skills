@@ -1,0 +1,280 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wiz{max-width:680px;padding:1rem 0;font-family:var(--font-sans)}
+.hdr{border-bottom:0.5px solid var(--color-border-tertiary);padding-bottom:1rem;margin-bottom:1.5rem}
+.hdr h1{font-size:20px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.hdr p{font-size:13px;color:var(--color-text-secondary)}
+.prog{display:flex;gap:5px;margin-bottom:1.5rem;align-items:center}
+.ps{height:4px;flex:1;border-radius:2px;background:var(--color-border-tertiary);transition:background 0.3s}
+.ps.done{background:#1D9E75}.ps.active{background:#378ADD}
+.plbl{font-size:12px;color:var(--color-text-secondary);min-width:64px;text-align:right}
+.step{display:none}.step.active{display:block}
+.stitle{font-size:16px;font-weight:500;color:var(--color-text-primary);margin-bottom:5px}
+.ssub{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:1.25rem}
+.ch{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:14px 16px;cursor:pointer;background:var(--color-background-primary);text-align:left;transition:border-color 0.2s,background 0.2s}
+.ch:hover{border-color:#378ADD;background:var(--color-background-secondary)}
+.ch.sel{border:1.5px solid #378ADD;background:#E6F1FB}
+.ci{font-size:20px;margin-bottom:6px;display:block}
+.ct{font-size:14px;font-weight:500;color:var(--color-text-primary);display:block}
+.cd{font-size:12px;color:var(--color-text-secondary);margin-top:3px;display:block}
+.blk{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);border:0.5px solid var(--color-border-tertiary);padding:1.25rem;margin-bottom:1rem}
+.blk h3{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bdg{font-size:11px;padding:2px 8px;border-radius:99px;font-weight:500}
+.bi{background:#E6F1FB;color:#185FA5}.bw{background:#FAEEDA;color:#854F0B}.bs{background:#EAF3DE;color:#3B6D11}.bd{background:#FCEBEB;color:#A32D2D}
+.is{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start;font-size:13px;color:var(--color-text-primary);line-height:1.6}
+.is:last-child{margin-bottom:0}
+.sn{min-width:20px;height:20px;border-radius:50%;background:#378ADD;color:#fff;font-size:11px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.cb{background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:10px 12px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);margin:8px 0;overflow-x:auto;white-space:pre;line-height:1.7}
+.hl{background:#FAEEDA;color:#854F0B;border-radius:3px;padding:1px 3px;font-family:var(--font-mono);font-size:12px}
+.al{border-radius:var(--border-radius-md);padding:10px 12px;font-size:13px;margin:8px 0;line-height:1.6;border-left:3px solid}
+.aw{background:#FAEEDA;color:#633806;border-color:#EF9F27}
+.ad{background:#FCEBEB;color:#791F1F;border-color:#E24B4A}
+.ag{background:#EAF3DE;color:#27500A;border-color:#639922}
+.ab{background:#E6F1FB;color:#0C447C;border-color:#378ADD}
+.err-box{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:10px 12px;margin-top:10px;background:var(--color-background-primary)}
+.err-lbl{font-size:11px;color:var(--color-text-secondary);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.err-lbl::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:#E24B4A;flex-shrink:0}
+.err-btn{font-size:12px;padding:5px 12px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);cursor:pointer;color:var(--color-text-primary);margin-top:6px}
+.err-btn:hover{background:var(--color-background-primary)}
+.bnr{display:flex;gap:8px;margin-top:1.25rem;flex-wrap:wrap}
+button.n{padding:8px 18px;border-radius:var(--border-radius-md);font-size:13px;font-weight:500;cursor:pointer;border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-primary);transition:background 0.2s}
+button.n:hover{background:var(--color-background-secondary)}
+button.n.pr{background:#378ADD;color:#fff;border-color:#378ADD}
+button.n.pr:hover{background:#185FA5}
+button.n.su{background:#1D9E75;color:#fff;border-color:#1D9E75}
+.cp{font-size:11px;padding:3px 8px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-secondary);background:var(--color-background-primary);cursor:pointer;color:var(--color-text-secondary);float:right}
+.cp:hover{background:var(--color-background-secondary)}
+.phase-tag{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px}
+</style>
+
+<div class="wiz">
+<h2 class="sr-only">n8n MCP and Claude Desktop interactive setup guide</h2>
+<div class="hdr">
+  <h1>n8n MCP + Claude Desktop — setup guide</h1>
+  <p>Personalised walkthrough · Select your OS and hosting to get exact steps</p>
+</div>
+<div class="prog">
+  <div class="ps active" id="p0"></div><div class="ps" id="p1"></div><div class="ps" id="p2"></div>
+  <div class="ps" id="p3"></div><div class="ps" id="p4"></div><div class="ps" id="p5"></div><div class="ps" id="p6"></div>
+  <span class="plbl" id="ptxt">Step 1 of 7</span>
+</div>
+
+<div class="step active" id="s0">
+  <div class="stitle">What operating system are you on?</div>
+  <div class="ssub">This determines where your Claude Desktop config file lives.</div>
+  <div class="choices">
+    <div class="ch" onclick="sel('os','win',this)"><span class="ci">🪟</span><span class="ct">Windows</span><span class="cd">Windows 10 or 11</span></div>
+    <div class="ch" onclick="sel('os','mac',this)"><span class="ci">🍎</span><span class="ct">macOS</span><span class="cd">Intel or Apple Silicon</span></div>
+    <div class="ch" onclick="sel('os','linux',this)"><span class="ci">🐧</span><span class="ct">Linux</span><span class="cd">Ubuntu, Debian, etc.</span></div>
+  </div>
+  <div class="bnr"><button class="n pr" onclick="nxt()">Continue</button></div>
+</div>
+
+<div class="step" id="s1">
+  <div class="stitle">Where is your n8n hosted?</div>
+  <div class="ssub">This sets your MCP endpoint URL.</div>
+  <div class="choices">
+    <div class="ch" onclick="sel('host','local',this)"><span class="ci">💻</span><span class="ct">Local machine</span><span class="cd">localhost:5678</span></div>
+    <div class="ch" onclick="sel('host','cloud',this)"><span class="ci">☁️</span><span class="ct">n8n Cloud</span><span class="cd">app.n8n.cloud</span></div>
+    <div class="ch" onclick="sel('host','vps',this)"><span class="ci">🖥️</span><span class="ct">Self-hosted / VPS</span><span class="cd">Your own server</span></div>
+  </div>
+  <div class="bnr"><button class="n" onclick="bck()">Back</button><button class="n pr" onclick="nxt()">Continue</button></div>
+</div>
+
+<div class="step" id="s2">
+  <div class="phase-tag">Phase 1 — n8n setup</div>
+  <div class="stitle">Enable MCP and get your token</div>
+  <div class="blk">
+    <h3>Enable MCP access <span class="bdg bi">n8n settings</span></h3>
+    <div class="is"><span class="sn">1</span><span>Open n8n → go to <b>Settings → Instance-level MCP</b></span></div>
+    <div class="is"><span class="sn">2</span><span>Toggle <b>"Enable MCP access"</b> to ON (requires admin/owner role)</span></div>
+    <div class="is"><span class="sn">3</span><span>Click <b>"Connection details"</b> (top-right) → switch to <b>Access Token</b> tab</span></div>
+    <div class="is"><span class="sn">4</span><span><b>Copy your token immediately</b> — it is redacted after you leave this page</span></div>
+    <div class="al ad">Token is a long JWT starting with "eyJ...". Copy the entire string — do not include any quotes around it.</div>
+  </div>
+  <div class="blk">
+    <h3>Your MCP endpoint URL</h3>
+    <div class="cb" id="ep-url"></div>
+    <div class="al ab" id="ep-note" style="display:none"></div>
+  </div>
+  <div class="err-box">
+    <div class="err-lbl">Stuck or seeing an error at this step?</div>
+    <button class="err-btn" onclick="sendPrompt('I am on Step 1 of n8n MCP setup — enabling MCP and getting the token. Here is the error or issue I am seeing: [describe or paste error / screenshot description here]')">Share error or screenshot ↗</button>
+  </div>
+  <div class="bnr"><button class="n" onclick="bck()">Back</button><button class="n pr" onclick="nxt()">Got my token — continue</button></div>
+</div>
+
+<div class="step" id="s3">
+  <div class="phase-tag">Phase 1 — n8n setup</div>
+  <div class="stitle">Create and expose a compatible workflow</div>
+  <div class="al aw">Only <b>Chat, Webhook, Form, or Schedule</b> triggers work with MCP. Manual Trigger is NOT compatible.</div>
+  <div class="blk">
+    <h3>Create the test workflow</h3>
+    <div class="is"><span class="sn">1</span><span>Go to <b>Workflows → New Workflow</b></span></div>
+    <div class="is"><span class="sn">2</span><span>Click <b>"+"</b> → choose <b>Chat trigger</b> (When chat message received) → select it</span></div>
+    <div class="is"><span class="sn">3</span><span>Click <b>"+"</b> again → add <b>Edit fields (Set)</b> node → connect it to Chat trigger → click the Edit fields (Set) node to open it → under <b>Fields to Set</b>, click <b>Add field</b> → set <b>Name</b> as <code>message</code> and <b>Value</b> as <code>MCP is working!</code></span></div>
+    <div class="is"><span class="sn">4</span><span>Click the workflow name in the <b>top-left header</b> → rename it to <b>MCP Test</b></span></div>
+    <div class="is"><span class="sn">5</span><span>Press <b>Ctrl+S</b> (Windows) / <b>Cmd+S</b> (Mac) to save → click dropdown arrow next to Save → select <b>Publish</b></span></div>
+  </div>
+  <div class="blk">
+    <h3>Expose workflow to MCP <span class="bdg bw">required</span></h3>
+    <div class="is"><span class="sn">1</span><span>Go to <b>Overview</b> → find <b>MCP Test</b> in your workflows list</span></div>
+    <div class="is"><span class="sn">2</span><span>Click the <b>... (3 dots)</b> menu next to MCP Test → select <b>Enable MCP access</b></span></div>
+    <div class="is"><span class="sn">3</span><span>Go to <b>Settings → Instance-level MCP</b> to confirm MCP Test appears in the table ✓</span></div>
+    <div class="al ag">Optional: click (...) → Edit description to help Claude identify what the workflow does.</div>
+  </div>
+  <div class="err-box">
+    <div class="err-lbl">Stuck or seeing an error at this step?</div>
+    <button class="err-btn" onclick="sendPrompt('I am on Step 2 of n8n MCP setup — creating and exposing a workflow. Here is the error or issue I am seeing: [describe or paste error / screenshot description here]')">Share error or screenshot ↗</button>
+  </div>
+  <div class="bnr"><button class="n" onclick="bck()">Back</button><button class="n pr" onclick="nxt()">Workflow published — continue</button></div>
+</div>
+
+<div class="step" id="s4">
+  <div class="phase-tag">Phase 2 — Claude Desktop setup</div>
+  <div class="stitle">Install mcp-remote and find your config file</div>
+  <div class="blk">
+    <h3>Step 1 — Install mcp-remote <span class="bdg bi">one-time only</span></h3>
+    <div class="is"><span class="sn">1</span><span id="term-open">Open terminal</span></div>
+    <div class="is"><span class="sn">2</span><span>Run:</span></div>
+    <div class="cb">npm install -g mcp-remote</div>
+    <div class="al aw">Node.js v18 or newer is required. If npm is not found, download from <b>nodejs.org</b> first.</div>
+    <div class="al ab">Success = "added 82 packages". The command <code>mcp-remote --version</code> will error — this is normal, not a problem.</div>
+  </div>
+  <div class="blk">
+    <h3>Step 2 — Find your config file</h3>
+    <div class="is"><span class="sn">1</span><span>Locate <code>claude_desktop_config.json</code> at:</span></div>
+    <div class="cb" id="cfg-path-1"></div>
+    <div class="cb" id="cfg-path-2"></div>
+    <div class="is"><span class="sn">2</span><span>Alternative: do a <b>global file search</b> for <code>claude_desktop_config.json</code> from your root directory</span></div>
+    <div class="is"><span class="sn">3</span><span>Open in any text editor (Notepad, VS Code, etc.)</span></div>
+    <div class="al ag">Share the full content of your existing <code>claude_desktop_config.json</code> in chat — Claude will give you the complete updated file to paste, avoiding human error.</div>
+  </div>
+  <div class="err-box">
+    <div class="err-lbl">Stuck or seeing an error at this step?</div>
+    <button class="err-btn" onclick="sendPrompt('I am on Step 3 of n8n MCP setup — installing mcp-remote or finding the config file. Here is the error or issue: [describe or paste error / screenshot description here]')">Share error or screenshot ↗</button>
+  </div>
+  <div class="bnr"><button class="n" onclick="bck()">Back</button><button class="n pr" onclick="nxt()">Config file found — continue</button></div>
+</div>
+
+<div class="step" id="s5">
+  <div class="phase-tag">Phase 2 — Claude Desktop setup</div>
+  <div class="stitle">Update the config file and restart Claude</div>
+  <div class="blk">
+    <h3>Step 3 — Add n8n-local to config</h3>
+    <div class="is"><span class="sn">1</span><span>Add the <code>n8n-local</code> block inside <code>mcpServers</code> — do not delete any existing entries</span></div>
+    <div class="is"><span class="sn">2</span><span>Replace <span class="hl">&lt;YOUR_N8N_TOKEN_HERE&gt;</span> with your full token. No angle brackets. No quotes around the token. Example format:</span></div>
+    <div class="cb">"Authorization:Bearer eyJhbGciOiJIUzI1NiIs..."</div>
+    <button class="cp" onclick="cpCfg()">Copy snippet</button>
+    <div class="cb" id="cfg-snip"></div>
+    <div class="al ad">Space after "Bearer" is required. Paste the full "eyJ..." string directly — no quotes around it.</div>
+    <div class="al ag">Share your existing config file content in chat and Claude will produce the complete updated file for you.</div>
+  </div>
+  <div class="blk">
+    <h3>Step 4 — Restart Claude Desktop</h3>
+    <div class="is"><span class="sn">1</span><span>Save the config file</span></div>
+    <div class="is"><span class="sn">2</span><span>Fully <b>quit Claude Desktop</b> — do not just close the window. Also <b>quit from the system tray</b> (right-click tray icon → Quit)</span></div>
+    <div class="is"><span class="sn">3</span><span>Reopen Claude Desktop</span></div>
+    <div class="is"><span class="sn">4</span><span>Go to <b>Settings → Connectors</b> — <b>n8n-local</b> should appear without a red "failed" badge</span></div>
+  </div>
+  <div class="err-box">
+    <div class="err-lbl">Seeing "Server disconnected", "failed" badge, or any error?</div>
+    <button class="err-btn" onclick="sendPrompt('I am on Step 4 of n8n MCP setup — config file or Claude Desktop restart. Here is the exact error or what I see in Settings > Connectors: [paste error message or describe screenshot here]')">Share error or screenshot ↗</button>
+  </div>
+  <div class="bnr"><button class="n" onclick="bck()">Back</button><button class="n pr" onclick="nxt()">Claude restarted — continue</button></div>
+</div>
+
+<div class="step" id="s6">
+  <div class="phase-tag">Phase 3 — Testing</div>
+  <div class="stitle">Verify Claude can talk to n8n</div>
+  <div class="blk">
+    <h3>Test 1 — read test <span class="bdg bs">list workflows</span></h3>
+    <div class="is"><span class="sn">1</span><span>Type in Claude Desktop:</span></div>
+    <div class="cb">List all workflows available in my n8n instance</div>
+    <div class="is"><span class="sn">2</span><span>Expected: Claude returns <b>MCP Test</b> using the search_workflows tool ✓</span></div>
+  </div>
+  <div class="blk">
+    <h3>Test 2 — execute test <span class="bdg bw">trigger workflow</span></h3>
+    <div class="is"><span class="sn">1</span><span>Type in Claude Desktop:</span></div>
+    <div class="cb">Execute my MCP Test workflow</div>
+    <div class="is"><span class="sn">2</span><span>Expected: Claude calls execute_workflow, n8n runs it, result returned ✓</span></div>
+  </div>
+  <div class="blk">
+    <h3>Test 3 — build test <span class="bdg bi">n8n v2.13+</span></h3>
+    <div class="is"><span class="sn">1</span><span>Type in Claude Desktop:</span></div>
+    <div class="cb">Create a workflow in n8n that fetches https://jsonplaceholder.typicode.com/todos/1 and returns the response</div>
+    <div class="is"><span class="sn">2</span><span>Expected: Claude scaffolds a new workflow directly in n8n ✓</span></div>
+  </div>
+  <div class="blk">
+    <h3>Troubleshoot quick reference</h3>
+    <div class="is"><span class="sn" style="background:#E24B4A">!</span><span><b>Server disconnected</b> → run <code>npm install -g mcp-remote</code> as admin → quit from system tray → reopen</span></div>
+    <div class="is"><span class="sn" style="background:#E24B4A">!</span><span><b>Not valid MCP config</b> → use <code>mcp-remote</code> command format, not <code>"type":"http"</code></span></div>
+    <div class="is"><span class="sn" style="background:#E24B4A">!</span><span><b>No workflows showing</b> → must use Chat/Webhook trigger AND be Published</span></div>
+    <div class="is"><span class="sn" style="background:#E24B4A">!</span><span><b>401 Unauthorized</b> → no quotes around token, space after "Bearer", full eyJ... string</span></div>
+  </div>
+  <div class="err-box">
+    <div class="err-lbl">Test failed or unexpected result?</div>
+    <button class="err-btn" onclick="sendPrompt('I completed n8n MCP setup but a test is failing. Here is what I see when I run the test: [paste the Claude response or error message here]')">Share error or screenshot ↗</button>
+  </div>
+  <div class="al ad" style="margin-top:10px">Security: rotate your n8n token regularly — Settings → Instance-level MCP → Connection details → Generate new token. Update config and restart Claude Desktop.</div>
+  <div class="bnr"><button class="n" onclick="bck()">Back</button><button class="n pr" onclick="nxt()">Tests passed — continue</button></div>
+</div>
+
+<div class="step" id="s7">
+  <div class="phase-tag">Step 7 — Adding new workflows to MCP</div>
+  <div class="stitle">Connect any new n8n workflow to Claude</div>
+  <div class="ssub">Follow these steps every time you build a new workflow. No config file changes or Claude Desktop restarts needed.</div>
+  <div class="blk">
+    <h3>Checklist — repeat each time <span class="bdg bs">no restart needed</span></h3>
+    <div class="is"><span class="sn">1</span><span>Build workflow with compatible trigger: <b>Chat, Webhook, Form, or Schedule</b>. Never Manual Trigger.</span></div>
+    <div class="is"><span class="sn">2</span><span>Press <b>Ctrl+S</b> (Windows) / <b>Cmd+S</b> (Mac) to save</span></div>
+    <div class="is"><span class="sn">3</span><span>Click dropdown arrow next to Save → select <b>Publish</b>. Must be Published, not just saved.</span></div>
+    <div class="is"><span class="sn">4</span><span>Go to <b>Overview</b> → find your workflow → click <b>... (3 dots)</b> → select <b>Enable MCP access</b></span></div>
+    <div class="is"><span class="sn">5</span><span>Go to <b>Settings → Instance-level MCP</b> → confirm workflow appears in table</span></div>
+    <div class="is"><span class="sn">6</span><span>Click <b>... → Edit description</b> and write what the workflow does. Example: <i>Sends daily job alert digest from LinkedIn and Indeed RSS feeds</i></span></div>
+    <div class="is"><span class="sn">7</span><span>Test in Claude Desktop: <b>"List all workflows in my n8n instance"</b> → new workflow should appear</span></div>
+    <div class="is"><span class="sn">8</span><span>Trigger it: <b>"Execute the [your workflow name] workflow"</b></span></div>
+  </div>
+  <div class="blk">
+    <h3>Common mistakes to avoid <span class="bdg bd">do not do these</span></h3>
+    <div class="is"><span class="sn" style="background:#E24B4A">x</span><span>Using Manual Trigger — workflow will not appear in the MCP enable dialog</span></div>
+    <div class="is"><span class="sn" style="background:#E24B4A">x</span><span>Forgetting to Publish — saved-only workflows do not appear in MCP</span></div>
+    <div class="is"><span class="sn" style="background:#E24B4A">x</span><span>Skipping Enable MCP access — workflows are hidden from MCP by default</span></div>
+    <div class="is"><span class="sn" style="background:#E24B4A">x</span><span>Editing config file or restarting Claude Desktop — only needed once during initial setup</span></div>
+  </div>
+  <div class="err-box">
+    <div class="err-lbl">New workflow not showing up in Claude after these steps?</div>
+    <button class="err-btn" onclick="sendPrompt('I built a new n8n workflow and enabled MCP access but Claude cannot see it. Workflow name: [name]. Trigger type: [type]. Published: [yes/no]. Claude response when I list workflows: [paste response]')">Share details for diagnosis ↗</button>
+  </div>
+  <div class="bnr">
+    <button class="n" onclick="bck()">Back</button>
+    <button class="n su" onclick="sendPrompt('My n8n MCP is fully set up and working with Claude Desktop. What automation workflows should I build first for job search, CareerForge, and ITAM use cases?')">What should I build next? ↗</button>
+  </div>
+</div>
+</div>
+
+<script>
+var S={os:null,host:null},cur=0;
+function sel(k,v,el){S[k]=v;Array.from(el.parentElement.children).forEach(function(c){c.classList.remove('sel')});el.classList.add('sel');}
+function upP(){for(var i=0;i<7;i++){var p=document.getElementById('p'+i);p.className='ps'+(i<cur?' done':i===cur?' active':'');}document.getElementById('ptxt').textContent='Step '+(cur+1)+' of 7';}
+function getEP(){if(S.host==='local')return'http://localhost:5678/mcp-server/http';if(S.host==='cloud')return'https://<your-subdomain>.app.n8n.cloud/mcp-server/http';return'https://<your-domain.com>/mcp-server/http';}
+function getEPNote(){return(S.host==='cloud'||S.host==='vps')?'Your n8n instance must be publicly accessible for Claude Desktop to reach it. Check firewall and proxy settings.':'';}
+function getCfg1(){if(S.os==='win')return'Windows: C:\\Users\\<YourUsername>\\AppData\\Roaming\\Claude\\claude_desktop_config.json';if(S.os==='mac')return'macOS: ~/Library/Application Support/Claude/claude_desktop_config.json';return'Linux: ~/.config/Claude/claude_desktop_config.json';}
+function getCfg2(){if(S.os==='win')return'Quick: Win+R → type %APPDATA%\\Claude → Enter';if(S.os==='mac')return'Quick: Finder → Cmd+Shift+G → paste path above';return'Search: find / -name "claude_desktop_config.json" 2>/dev/null';}
+function getSnip(){return'"n8n-local": {\n  "command": "mcp-remote",\n  "args": [\n    "'+getEP()+'",\n    "--header",\n    "Authorization:Bearer <YOUR_N8N_TOKEN_HERE>"\n  ]\n}';}
+function getTerm(){if(S.os==='win')return'Open Command Prompt → right-click → Run as Administrator';if(S.os==='mac')return'Open Terminal (Cmd+Space → Terminal → Enter)';return'Open Terminal';}
+function populate(n){
+  if(n===2){var e=document.getElementById('ep-url');if(e)e.textContent=getEP();var en=document.getElementById('ep-note');if(en){var note=getEPNote();en.textContent=note;en.style.display=note?'block':'none';}}
+  if(n===4){var c1=document.getElementById('cfg-path-1');if(c1)c1.textContent=getCfg1();var c2=document.getElementById('cfg-path-2');if(c2)c2.textContent=getCfg2();var to=document.getElementById('term-open');if(to)to.textContent=getTerm();}
+  if(n===5){var sn=document.getElementById('cfg-snip');if(sn)sn.innerHTML=getSnip().replace('<YOUR_N8N_TOKEN_HERE>','<span class="hl">&lt;YOUR_N8N_TOKEN_HERE&gt;</span>');}
+}
+function nxt(){
+  if(cur===0&&!S.os){alert('Please select your operating system.');return;}
+  if(cur===1&&!S.host){alert('Please select your n8n hosting type.');return;}
+  if(cur<6){document.getElementById('s'+cur).classList.remove('active');cur++;document.getElementById('s'+cur).classList.add('active');populate(cur);upP();window.scrollTo(0,0);}
+}
+function bck(){if(cur>0){document.getElementById('s'+cur).classList.remove('active');cur--;document.getElementById('s'+cur).classList.add('active');upP();window.scrollTo(0,0);}}
+function cpCfg(){navigator.clipboard.writeText(getSnip()).then(function(){var b=document.querySelector('.cp');b.textContent='Copied!';setTimeout(function(){b.textContent='Copy snippet';},2000);});}
+upP();
+</script>
