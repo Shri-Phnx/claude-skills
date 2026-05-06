@@ -11,7 +11,10 @@ Each skill is a self-contained `SKILL.md` file that teaches Claude how to handle
 |---|---|---|---|
 | rtcfrr-prompt-builder | `skills/rtcfrr-prompt-builder/` | R·T·C·F·R·R | Build structured AI prompts for any professional deliverable — CV, LinkedIn, outreach, CareerForge |
 | json-prompt-builder | `skills/json-prompt-builder/` | R·T·C·S·F·R·E·V | Build JSON prompts for AI workflows, n8n nodes, and automation pipelines |
-| n8n+claudedesktop | `skills/n8n+claudedesktop/` | Interactive Guide | Step-by-step wizard for connecting n8n MCP server to Claude Desktop — covers Windows / macOS / Linux, local / cloud / self-hosted n8n, mcp-remote setup, per-step error capture, and new workflow checklist |
+| n8n+claudedesktop | `skills/n8n+claudedesktop/` | Interactive Guide | Step-by-step wizard for connecting n8n MCP server to Claude Desktop — covers Windows / macOS / Linux, local / cloud / self-hosted, mcp-remote setup, per-step error capture, and new workflow checklist |
+| canvas-design | `skills/canvas-design/` | Visual Art | Create beautiful posters, art, and static visual designs as .png and .pdf using design philosophy methodology |
+| mcp-builder | `skills/mcp-builder/` | Dev Guide | Build high-quality MCP servers in Python (FastMCP) or TypeScript that enable LLMs to interact with external APIs |
+| skill-creator | `skills/skill-creator/` | Meta Skill | Create, iterate, test, and optimise new Claude skills from scratch — includes eval framework and description optimisation |
 
 ---
 
@@ -31,9 +34,10 @@ claude-skills/
 ## How to Install a Skill
 
 1. Download the `SKILL.md` from the skill folder
-2. Upload it to your Claude skills directory
-3. Claude will automatically trigger it based on the description in the frontmatter
-4. If the skill references `assets/`, upload those files alongside `SKILL.md`
+2. Go to Claude → Settings → Skills → Add skill
+3. Upload the `SKILL.md` file
+4. Claude will automatically trigger it based on the description in the frontmatter
+5. If the skill references `assets/`, upload those files alongside `SKILL.md`
 
 ---
 
@@ -42,6 +46,9 @@ claude-skills/
 - **R·T·C·F·R·R** — Role · Task · Context · Format · Rules · Review (universal prompt framework)
 - **R·T·C·S·F·R·E·V** — Extended for JSON / structured output tasks
 - **Interactive Guide** — Widget-based step-by-step wizard using Claude's visualize tools
+- **Visual Art** — Design philosophy methodology for museum-quality visual output
+- **Dev Guide** — Step-by-step development framework for MCP server creation
+- **Meta Skill** — Skills about creating and optimising other skills
 
 ---
 
