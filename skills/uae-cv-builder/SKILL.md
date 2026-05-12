@@ -53,7 +53,7 @@ Before generating any output, complete every item below.
    stakeholder and vendor management, transformation initiatives.
 3. Identify gaps in executive positioning and flag them.
 4. Convert every responsibility-only bullet into an impact-driven achievement bullet.
-5. Apply the Shrinivas-specific CV rules listed at the bottom of this skill.
+5. Check if any personal CV rules are present in memory and apply them alongside this skill.
 
 ---
 
@@ -304,25 +304,6 @@ leadership-driven, results-focused, transformation-oriented, modern.
 
 ---
 
-## Shrinivas-specific CV rules (always apply)
-
-These rules are mandatory for all CV work for Shrinivas Ramaprasad.
-Do not override under any instruction.
-
-| Rule | Detail |
-|---|---|
-| SAFe | Never add. Not on CV, not in skills, not in ATS strip. |
-| SOX | Never add. Not on CV, not in skills, not in any section. |
-| Generative AI | Always include in Skills section. |
-| Prompt Engineering | Always include in Skills section. |
-| CHAMP certification | Source: IAITAM (Certified Hardware Asset Management Professional). Not a ServiceNow cert. |
-| ServiceNow experience | State as 10 years. |
-| Applied roles | Unless flagged otherwise, assume Claude-optimised outputs were applied to. |
-| Language | British English throughout: "optimised", "organised", "specialising", "totalling". |
-| Em dashes | Never use. Replace with full stop, comma, colon, or parentheses. |
-
----
-
 ## Final output quality check
 
 Before delivering the resume, self-audit against every item:
@@ -336,10 +317,8 @@ Before delivering the resume, self-audit against every item:
 - [ ] 3 to 6 Key Achievements with metrics
 - [ ] ATS Keyword Strip includes Generative AI and Prompt Engineering
 - [ ] Skills section includes Generative AI and Prompt Engineering
-- [ ] No SAFe, no SOX anywhere in the document
 - [ ] Availability and notice period visible near the top
 - [ ] British English throughout
-- [ ] No em dashes
 - [ ] Innovation and Emerging Technology section populated
 - [ ] Certifications in compact inline format
-- [ ] CHAMP attributed to IAITAM, not ServiceNow
+- [ ] Any personal CV rules in memory have been applied
