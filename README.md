@@ -15,6 +15,7 @@ Each skill is a self-contained `SKILL.md` file that teaches Claude how to handle
 | canvas-design | `skills/canvas-design/` | Visual Art | Create beautiful posters, art, and static visual designs as .png and .pdf using design philosophy methodology |
 | mcp-builder | `skills/mcp-builder/` | Dev Guide | Build high-quality MCP servers in Python (FastMCP) or TypeScript that enable LLMs to interact with external APIs |
 | skill-creator | `skills/skill-creator/` | Meta Skill | Create, iterate, test, and optimise new Claude skills from scratch — includes eval framework and description optimisation |
+| uae-cv-builder | `skills/uae-cv-builder/` | Executive Resume | Build a premium UAE/GCC ATS-optimised executive resume from an uploaded CV — tailored for Program Manager, PMO, IT Director, and Service Delivery roles in Dubai, Abu Dhabi, and the broader GCC market |
 
 ---
 
@@ -49,6 +50,7 @@ claude-skills/
 - **Visual Art** — Design philosophy methodology for museum-quality visual output
 - **Dev Guide** — Step-by-step development framework for MCP server creation
 - **Meta Skill** — Skills about creating and optimising other skills
+- **Executive Resume** — UAE/GCC executive ATS resume builder with recruiter scanning optimisation
 
 ---
 
