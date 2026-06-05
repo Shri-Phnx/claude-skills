@@ -65,9 +65,6 @@ Conditions (any one matches):
 - File is `.md` and its frontmatter contains `name:` and `description:` fields
 - File description mentions: "use this skill when", "trigger when", "use when the user"
 
-Action: fetch content, extract `name` from frontmatter (or use filename), save as
-`[skill-name].md`
-
 Save to: `C:\Users\PC\Documents\Claude\Skills\Claude Skills\[skill-name].md`
 Mirror to GitHub: `claude-skills/[skill-name].md` in `Shri-Phnx/claude-skills`
 
@@ -76,8 +73,6 @@ Conditions (any one matches):
 - File is inside a folder named `claude-code-skills/`
 - File is a Claude Skill AND its content is primarily about: writing code, building MCP servers,
   CLI tools, development workflows, code generation, or technical implementation
-
-Action: same as Claude Skill but different destination.
 
 Save to: `C:\Users\PC\Documents\Claude\Skills\Claude Code skills\[skill-name].md`
 Mirror to GitHub: `claude-code-skills/[skill-name].md` in `Shri-Phnx/claude-skills`
@@ -88,8 +83,6 @@ Conditions (any one matches):
 - File is named `plugin.json` or `manifest.json` with a `plugin` key
 - File is inside a folder named `plugins/`
 
-Action: fetch and save as-is, preserving original filename.
-
 Save to: `C:\Users\PC\Documents\Claude\Plugins\[filename]`
 No GitHub mirror.
 
@@ -97,8 +90,6 @@ No GitHub mirror.
 Conditions (all must match):
 - File extension is `.json`
 - File content contains both `"nodes"` and `"connections"` keys at the top level
-
-Action: fetch and save as-is, preserving original filename.
 
 Save to: `C:\Users\PC\Documents\Claude\n8n\Workflows\[filename]`
 No GitHub mirror.
@@ -108,8 +99,6 @@ Conditions (any one matches):
 - File content contains `"mcpServers"` key
 - File is named `claude_desktop_config.json` or `mcp-config.json`
 
-Action: fetch and save, prefixing filename with `[repo-name]-` to avoid collisions.
-
 Save to: `C:\Users\PC\Documents\Claude\Reference\mcp-configs\[repo-name]-[filename]`
 No GitHub mirror.
 
@@ -117,8 +106,6 @@ No GitHub mirror.
 Conditions (any one matches):
 - File extension is `.py`, `.js`, `.ts`, `.sh`, `.bash`
 - File is inside a folder named `scripts/`
-
-Action: fetch and save, preserving original filename.
 
 Save to: `C:\Users\PC\Documents\Claude\Scripts\[filename]`
 No GitHub mirror.
@@ -129,8 +116,6 @@ Conditions (any one matches):
 - File is inside a folder named `docs/` or `documentation/`
 - File extension is `.md` or `.txt` but does not match Claude Skill conditions
 
-Action: fetch and save, prefixing filename with `[repo-name]-`.
-
 Save to: `C:\Users\PC\Documents\Claude\Reference\[repo-name]-[filename]`
 No GitHub mirror.
 
@@ -139,17 +124,13 @@ Conditions (any one matches):
 - File extension is `.yaml`, `.yml`, `.toml`, `.env.example`
 - File is named `config.json` (but not an MCP config)
 
-Action: fetch and save, prefixing with `[repo-name]-`.
-
 Save to: `C:\Users\PC\Documents\Claude\Reference\configs\[repo-name]-[filename]`
 No GitHub mirror.
 
 ### Unclassifiable
 Conditions: none of the above matched after reading the file.
 
-Action: fetch and save as-is.
-
-Save to: `C:\Users\PC\Documents\Claude\Other Gitgub content\[repo-name]-[filename]`
+Save to: `C:\Users\PC\Documents\Claude\Other Github Content\[repo-name]-[filename]`
 No GitHub mirror. Flag in the session summary.
 
 ---
@@ -162,14 +143,14 @@ For each classified file:
 3. For Claude Skills and Claude Code Skills: push to `Shri-Phnx/claude-skills` using
    `create_or_update_file` or batch via `push_files` if multiple skills
 
-If a file already exists at the local path, check if the content differs before overwriting.
-If identical, skip and note "already up to date" in the summary.
+If a file already exists at the local path and content is identical, skip and note
+"already up to date" in the summary.
 
 ---
 
 ## Step 5 — Update memory.md
 
-After all files are saved, append one entry to `memory.md` under Patterns and Preferences:
+Append to `C:\Users\PC\Documents\Claude\About Me\memory.md` under Patterns and Preferences:
 
 ```
 - [date]: Fetched [repo-name] from github.com/[owner]/[repo].
@@ -182,35 +163,30 @@ After all files are saved, append one entry to `memory.md` under Patterns and Pr
 
 ## Step 6 — Report to User
 
-Deliver a short summary table at the end:
+Deliver a short summary table:
 
 | File | Classified As | Saved To | GitHub Mirror |
 |---|---|---|---|
 | [filename] | Claude Skill | Claude Skills\ | Yes |
 | [filename] | n8n Workflow | n8n\Workflows\ | No |
-| [filename] | Unclassified | Other Gitgub content\ | No — review needed |
-
-Flag any unclassified files explicitly so the user can decide what to do with them.
+| [filename] | Unclassified | Other Github Content\ | No — review needed |
 
 ---
 
 ## Edge Cases
 
-**Private repos from other people:** GitHub MCP cannot read repos where access has not been
-granted. If `get_file_contents` returns 404 or 403, tell the user: "This repo is private or
-access is not granted. Share the raw file URL directly and I will fetch and classify it."
+**Private repos from other people:** If `get_file_contents` returns 404 or 403, tell the user:
+"This repo is private or access is not granted. Share the raw file URL directly and I will
+fetch and classify it."
 
-**Single raw file URL:** If the user shares a raw.githubusercontent.com URL, fetch it with
-web_fetch, classify the content, and save accordingly.
+**Single raw file URL (raw.githubusercontent.com):** Fetch with web_fetch, classify, save.
 
-**Very large repos:** If the root directory listing contains more than 30 items, ask the user
-which folder to focus on rather than trying to process the entire repo.
+**Very large repos:** If root directory contains more than 30 items, ask the user which folder
+to focus on rather than processing the entire repo.
 
-**Ambiguous classification:** If a file could be either a Claude Skill or a Claude Code Skill,
-read the full content. If it involves writing, running, or debugging code as its primary output,
-it is a Claude Code Skill. If it guides Claude in a task or conversation, it is a Claude Skill.
-When genuinely uncertain after reading, default to Claude Skill and note the ambiguity in the
-summary.
+**Ambiguous Skill vs Code Skill:** Read full content. If it involves writing/running/debugging
+code as primary output → Claude Code Skill. If it guides Claude in a task → Claude Skill.
+When genuinely uncertain, default to Claude Skill and note the ambiguity.
 
 ---
 
@@ -226,7 +202,7 @@ summary.
 | Script | `C:\Users\PC\Documents\Claude\Scripts\` |
 | Reference / Docs | `C:\Users\PC\Documents\Claude\Reference\` |
 | Config / Settings | `C:\Users\PC\Documents\Claude\Reference\configs\` |
-| Unclassified | `C:\Users\PC\Documents\Claude\Other Gitgub content\` |
+| Unclassified | `C:\Users\PC\Documents\Claude\Other Github Content\` |
 
 GitHub mirror (Shri-Phnx/claude-skills):
 - Claude Skills → `claude-skills/[skill-name].md`
