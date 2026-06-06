@@ -1,22 +1,34 @@
 # Claude Skills — by Shrinivas Ramaprasad
 
-A growing library of reusable Claude skills built on structured prompt frameworks.
-Each skill is a self-contained `SKILL.md` file that teaches Claude how to handle a specific class of tasks with precision and consistency.
+A growing library of reusable Claude skills and Claude Code skills.
+All skills live under a single directory: `skills/[skill-name]/SKILL.md`.
 
 ---
 
 ## Skill Index
 
-| Skill | Path | Framework / Type | Purpose |
+| Skill | Path | Type | Purpose |
 |---|---|---|---|
-| rtcfrr-prompt-builder | `skills/rtcfrr-prompt-builder/` | R·T·C·F·R·R | Build structured AI prompts for any professional deliverable — CV, LinkedIn, outreach, CareerForge |
-| json-prompt-builder | `skills/json-prompt-builder/` | R·T·C·S·F·R·E·V | Build JSON prompts for AI workflows, n8n nodes, and automation pipelines |
-| n8n+claude_Web/Desktop | `skills/n8n+claudedesktop/` | Conversational Guide | Step-by-step guide for connecting n8n to Claude — covers both Claude.ai Web (no software needed) and Claude Desktop (mcp-remote). Includes OS-specific config paths, token setup, workflow publishing checklist, and troubleshooting. |
-| canvas-design | `skills/canvas-design/` | Visual Art | Create beautiful posters, art, and static visual designs as .png and .pdf using design philosophy methodology |
-| mcp-builder | `skills/mcp-builder/` | Dev Guide | Build high-quality MCP servers in Python (FastMCP) or TypeScript that enable LLMs to interact with external APIs |
-| skill-creator | `skills/skill-creator/` | Meta Skill | Create, iterate, test, and optimise new Claude skills from scratch — includes eval framework and description optimisation |
-| uae-cv-builder | `skills/uae-cv-builder/` | Executive Resume | Build a premium UAE/GCC ATS-optimised executive resume from an uploaded CV — tailored for Program Manager, PMO, IT Director, and Service Delivery roles in Dubai, Abu Dhabi, and the broader GCC market |
-| skeptical-vc-red-team | `skills/skeptical-vc-red-team/` | Red Team Framework | Universal skeptical VC red team for any product idea, business concept, feature, or brainstorm — diagnoses risks, guides toward the right path, provides actionable suggestions, and simplifies complex challenges into clear next steps |
+| rtcfrr-prompt-builder | `skills/rtcfrr-prompt-builder/` | Claude Skill | Build structured AI prompts using the R·T·C·F·R·R framework — CV, LinkedIn, outreach, CareerForge |
+| json-prompt-builder | `skills/json-prompt-builder/` | Claude Skill | Build JSON prompts for AI workflows, n8n nodes, and automation pipelines |
+| n8n+claudedesktop | `skills/n8n+claudedesktop/` | Claude Skill | Connect n8n to Claude Web and Desktop — OS-specific config paths, token setup, workflow publishing, troubleshooting |
+| canvas-design | `skills/canvas-design/` | Claude Skill | Create visual designs as .png and .pdf using design philosophy methodology |
+| mcp-builder | `skills/mcp-builder/` | Claude Skill | Build MCP servers in Python (FastMCP) or TypeScript |
+| skill-creator | `skills/skill-creator/` | Claude Skill | Create, iterate, test, and optimise new Claude skills — includes eval framework |
+| uae-cv-builder | `skills/uae-cv-builder/` | Claude Skill | Build UAE/GCC ATS-optimised executive resumes for Program Manager, PMO, IT Director roles |
+| skeptical-vc-red-team | `skills/skeptical-vc-red-team/` | Claude Skill | Universal VC-style red team for any product idea, business concept, or brainstorm |
+| frontend-slides | `skills/frontend-slides/` | Claude Skill | Create animation-rich HTML presentations from scratch or by converting PPT/PPTX |
+| github-content-fetcher | `skills/github-content-fetcher/` | Claude Skill | Fetch, classify, and save content from any GitHub URL into the correct local folder |
+| growth-loop-sparring | `skills/growth-loop-sparring/` | Claude Skill | Evaluate and red-team growth loops — generates candidates, stress-tests each, picks the winner |
+| aris-arxiv | `skills/aris-arxiv/` | Claude Code Skill | Search and download academic papers from arXiv |
+| aris-auto-review-loop | `skills/aris-auto-review-loop/` | Claude Code Skill | Autonomous multi-round research review loop via Codex or manual reviewer |
+| aris-idea-discovery | `skills/aris-idea-discovery/` | Claude Code Skill | Full idea discovery pipeline from a research direction to validated, pilot-tested ideas |
+| aris-kill-argument | `skills/aris-kill-argument/` | Claude Code Skill | Adversarial attack-defense review for theory papers — find the worst-case rejection argument |
+| aris-paper-writing | `skills/aris-paper-writing/` | Claude Code Skill | Full paper writing pipeline from narrative report to submission-ready PDF |
+| aris-research-pipeline | `skills/aris-research-pipeline/` | Claude Code Skill | End-to-end autonomous research pipeline: idea discovery → experiments → paper |
+| aris-research-review | `skills/aris-research-review/` | Claude Code Skill | Deep critical review via external reviewer backend (Codex or manual) |
+| aris-semantic-scholar | `skills/aris-semantic-scholar/` | Claude Code Skill | Search published papers via Semantic Scholar API (IEEE, ACM, Springer) |
+| karpathy-guidelines | `skills/karpathy-guidelines/` | Claude Code Skill | Behavioral guidelines to reduce common LLM coding mistakes |
 
 ---
 
@@ -26,19 +38,22 @@ Each skill is a self-contained `SKILL.md` file that teaches Claude how to handle
 claude-skills/
 └── skills/
     └── [skill-name]/
-        ├── SKILL.md                   ← Claude skill definition (frontmatter + instructions)
-        └── assets/                    ← Supporting files (templates, references)
-            └── [asset-file]
+        └── SKILL.md        ← Skill definition (frontmatter + instructions)
 ```
 
 ---
 
 ## How to Install a Skill
 
+### Claude Skills (claude.ai)
 1. Download the `SKILL.md` from the skill folder
 2. Go to Claude → Settings → Skills → Add skill
 3. Upload the `SKILL.md` file
 4. Claude will automatically trigger it based on the description in the frontmatter
+
+### Claude Code Skills
+1. Download the `SKILL.md` from the skill folder
+2. Place it in your project's `.claude/skills/` directory or follow Claude Code skill installation docs
 
 ---
 
