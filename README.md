@@ -29,6 +29,22 @@ All skills live under a single directory: `skills/[skill-name]/SKILL.md`.
 | aris-research-review | `skills/aris-research-review/` | Claude Code Skill | Deep critical review via external reviewer backend (Codex or manual) |
 | aris-semantic-scholar | `skills/aris-semantic-scholar/` | Claude Code Skill | Search published papers via Semantic Scholar API (IEEE, ACM, Springer) |
 | karpathy-guidelines | `skills/karpathy-guidelines/` | Claude Code Skill | Behavioral guidelines to reduce common LLM coding mistakes |
+| email-sequence | `skills/email-sequence/` | Claude Skill | Design multi-email sequences — welcome, nurture, re-engagement, onboarding, win-back |
+| analytics-tracking | `skills/analytics-tracking/` | Claude Skill | Set up and audit analytics tracking — GA4, GTM, UTM strategy, event naming, tracking plans |
+| ab-test-setup | `skills/ab-test-setup/` | Claude Skill | Design and run A/B tests — hypothesis framework, sample size, and a full growth experimentation program |
+| free-tool-strategy | `skills/free-tool-strategy/` | Claude Skill | Plan and evaluate free marketing tools (engineering-as-marketing) for lead gen and SEO |
+| launch-strategy | `skills/launch-strategy/` | Claude Skill | Plan product launches and feature announcements — ORB framework, five-phase launch, Product Hunt playbook |
+| aso-audit | `skills/aso-audit/` | Claude Skill | Audit App Store and Google Play listings against ASO best practices with scored, prioritised fixes |
+| form-cro | `skills/form-cro/` | Claude Skill | Optimise lead capture, contact, demo, and checkout forms for higher completion rates |
+| paid-ads | `skills/paid-ads/` | Claude Skill | Plan and optimise paid ad campaigns across Google, Meta, LinkedIn, X, and TikTok |
+| competitor-alternatives | `skills/competitor-alternatives/` | Claude Skill | Build competitor comparison and alternative pages for SEO and sales enablement |
+| page-cro | `skills/page-cro/` | Claude Skill | Analyse and improve conversion rates on homepages, landing pages, pricing, and feature pages |
+| tailored-resume-generator | `skills/tailored-resume-generator/` | Claude Skill | Tailor resumes to a specific job description with ATS keyword optimisation |
+| knowledge-base-health-check-skill | `skills/knowledge-base-health-check-skill/` | Claude Skill | Audit a Claude-managed knowledge base — auto-fixes drift, drafts new articles, flags judgement calls |
+| meeting-insights-analyzer | `skills/meeting-insights-analyzer/` | Claude Code Skill | Analyse meeting transcripts for communication patterns, conflict avoidance, and speaking ratios |
+| lead-research-assistant | `skills/lead-research-assistant/` | Claude Code Skill | Identify and score high-fit leads from a product/service description, with contact strategies |
+| langsmith-fetch | `skills/langsmith-fetch/` | Claude Code Skill | Debug LangChain/LangGraph agents by fetching and analysing LangSmith execution traces |
+| content-research-writer | `skills/content-research-writer/` | Claude Code Skill | Collaborative writing partner — outlining, research citations, hook improvement, section feedback |
 
 ---
 
