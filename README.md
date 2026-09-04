@@ -45,6 +45,19 @@ All skills live under a single directory: `skills/[skill-name]/SKILL.md`.
 | lead-research-assistant | `skills/lead-research-assistant/` | Claude Code Skill | Identify and score high-fit leads from a product/service description, with contact strategies |
 | langsmith-fetch | `skills/langsmith-fetch/` | Claude Code Skill | Debug LangChain/LangGraph agents by fetching and analysing LangSmith execution traces |
 | content-research-writer | `skills/content-research-writer/` | Claude Code Skill | Collaborative writing partner — outlining, research citations, hook improvement, section feedback |
+| design-taste-frontend | `skills/design-taste-frontend/` | Claude Skill | Anti-slop frontend skill for landing pages, portfolios, and redesigns — reads the brief, infers design direction, ships non-templated interfaces |
+| design-taste-frontend-v1 | `skills/design-taste-frontend-v1/` | Claude Skill | Original v1 taste-skill, preserved for projects depending on its exact behavior |
+| brandkit | `skills/brandkit/` | Claude Skill | Premium brand-kit image generation — logo systems, identity decks, brand-guidelines boards |
+| industrial-brutalist-ui | `skills/industrial-brutalist-ui/` | Claude Skill | Raw mechanical interfaces fusing Swiss typographic print with military terminal aesthetics |
+| gpt-taste | `skills/gpt-taste/` | Claude Skill | Elite UX/UI & GSAP motion engineer — strict AIDA structure, bento grids, ScrollTrigger motion |
+| image-to-code | `skills/image-to-code/` | Claude Skill | Image-first website design skill — generates design references, then implements matching frontend |
+| imagegen-frontend-mobile | `skills/imagegen-frontend-mobile/` | Claude Skill | Premium app-native mobile screen concept generation for iOS, Android, and cross-platform products |
+| imagegen-frontend-web | `skills/imagegen-frontend-web/` | Claude Skill | Premium conversion-aware website design reference generation, one image per section |
+| minimalist-ui | `skills/minimalist-ui/` | Claude Skill | Clean editorial-style interfaces — warm monochrome palette, typographic contrast, flat bento grids |
+| full-output-enforcement | `skills/full-output-enforcement/` | Claude Skill | Overrides default LLM truncation — enforces complete, unabridged code generation |
+| redesign-existing-projects | `skills/redesign-existing-projects/` | Claude Skill | Upgrades existing websites and apps to premium quality without breaking functionality |
+| high-end-visual-design | `skills/high-end-visual-design/` | Claude Skill | Teaches agency-level fonts, spacing, shadows, card structures, and animations |
+| stitch-design-taste | `skills/stitch-design-taste/` | Claude Skill | Generates agent-friendly DESIGN.md files enforcing premium, anti-generic UI standards for Google Stitch |
 
 ---
 
