@@ -45,6 +45,11 @@ All skills live under a single directory: `skills/[skill-name]/SKILL.md`.
 | lead-research-assistant | `skills/lead-research-assistant/` | Claude Code Skill | Identify and score high-fit leads from a product/service description, with contact strategies |
 | langsmith-fetch | `skills/langsmith-fetch/` | Claude Code Skill | Debug LangChain/LangGraph agents by fetching and analysing LangSmith execution traces |
 | content-research-writer | `skills/content-research-writer/` | Claude Code Skill | Collaborative writing partner — outlining, research citations, hook improvement, section feedback |
+| video-import-public | `skills/video-import-public/` | Claude Code Skill | Upload a local video or hosted URL straight into a new Descript project — first step of the reel pipeline |
+| content-gold-miner-public | `skills/content-gold-miner-public/` | Claude Code Skill | Mine a long already-filmed video for the 3–5 strongest reel ideas, each with hook line and timecode |
+| script-prep-public | `skills/script-prep-public/` | Claude Code Skill | Turn one already-filmed, already-scripted piece into a final approved script from the best takes |
+| video-editing-public | `skills/video-editing-public/` | Claude Code Skill | Cut and caption talking-head reels in Descript via the Descript MCP, from an approved keep-script |
+| watch | `skills/watch/` | Claude Code Skill | Watch a video (URL or local path) via yt-dlp/ffmpeg and answer questions about what's in it |
 
 ---
 

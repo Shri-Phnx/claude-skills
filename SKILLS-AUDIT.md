@@ -16,6 +16,8 @@ These skill names are active in the session with no matching folder under `skill
 4. `video-import-public`
 5. `watch`
 
+> Update 2026-09-04: all five of the above were added to the repo. See §4 for details — leaving this list as-is as a record of the original audit.
+
 **Not actually missing — Claude Code's own built-in skills**, never meant to live in this repo: `session-start-hook`, `doc-coauthoring`, `web-artifacts-builder`, `theme-factory`, `internal-comms`, `brand-guidelines`, `slack-gif-creator`, `algorithmic-art`, `xlsx`, `pptx`, `pdf`, `docx`, `design`, `dataviz`, `artifact-design`, `artifact-diagramming`, `artifact-capabilities`, `update-config`, `keybindings-help`, `code-review`, `simplify`, `fewer-permission-prompts`, `loop`, `claude-api`, `run`, `init`, `security-review`, `import-memory`, `learn`, `morning`.
 
 **Possibly the same skill under an older name** — repo folder uses a shorter name than the currently-installed skill; worth confirming before renaming:
@@ -52,6 +54,8 @@ The session's skill manifest tags each skill with a `source`. Only the ones tagg
 
 The `watch` / `content-gold-miner-public` / `video-editing-public` / `video-import-public` / `script-prep-public` group looks like one connected plugin suite for turning raw footage into edited reels via Descript — worth pulling into the repo together if you want the full pipeline documented.
 
+> Update 2026-09-04: the "In this repo?" column above is now stale for these five — all were added. See §4.
+
 ---
 
 ## 3. Other dependencies worth flagging (not plugin-backed, but need something external)
@@ -65,6 +69,28 @@ These are your own `custom`-source skills already in the repo — no plugin invo
 | `github-content-fetcher` | `skills/github-content-fetcher/` | GitHub access to the target repo, and write access to `Shri-Phnx/claude-skills` for the mirroring step |
 | `semantic-scholar` (installed) / `aris-semantic-scholar` (repo) | `skills/aris-semantic-scholar/` | Semantic Scholar API access |
 | `knowledge-base-health-check-skill` | `skills/knowledge-base-health-check-skill/` | An existing Claude-managed knowledge base to audit |
+
+---
+
+## 4. Update log
+
+### 2026-09-04 — added the Descript reel-pipeline skills
+
+Pulled all five plugin-backed skills flagged as "not in repo" in §1 straight from the live session's synced plugin files (`SKILL.md` only — none of the five ship extra reference files):
+
+| Skill | New repo path | Source |
+|---|---|---|
+| `content-gold-miner-public` | `skills/content-gold-miner-public/SKILL.md` | `backingPluginId: plugin_018oaWKPEWqRtF7JBDVEqfkC` |
+| `script-prep-public` | `skills/script-prep-public/SKILL.md` | `backingPluginId: plugin_017fkDowtHxBQYJg8EmAWZdf` |
+| `video-editing-public` | `skills/video-editing-public/SKILL.md` | `backingPluginId: plugin_0191dqJSvd1QGfEFnNraxH3S` |
+| `video-import-public` | `skills/video-import-public/SKILL.md` | `backingPluginId: plugin_01LzSmys6Wykj89qjpyHr2vi` |
+| `watch` | `skills/watch/SKILL.md` | `backingPluginId: plugin_01FYaT54eZSb9nWN5sBJSm8y` |
+
+These five form one pipeline: `video-import-public` gets footage into Descript → `content-gold-miner-public` (long raw footage) or `script-prep-public` (a single already-scripted piece) finds the keep-script → `video-editing-public` cuts and captions it via the Descript MCP. `watch` is separate — a general "watch and answer questions about a video" skill (yt-dlp + ffmpeg + captions/Whisper), not part of the Descript chain.
+
+Dependencies carried over from §2 still apply — most notably, `video-editing-public` needs a **paid** Descript plan with AI credits to actually run.
+
+§1 and §2 above are left as the original 2026-09-03 snapshot; this entry is the delta.
 
 ---
 
