@@ -1,5 +1,5 @@
 ---
-name: rtcfrr-prompt-builder
+name: rtcfrr-prompt
 description: >
   Apply the R·T·C·F·R·R Universal Prompt Template to generate structured, high-quality AI prompts
   for any use case. Use this skill whenever the user wants to: build a prompt using the RTCFRR

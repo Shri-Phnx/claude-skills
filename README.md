@@ -9,7 +9,7 @@ All skills live under a single directory: `skills/[skill-name]/SKILL.md`.
 
 | Skill | Path | Type | Purpose |
 |---|---|---|---|
-| rtcfrr-prompt-builder | `skills/rtcfrr-prompt-builder/` | Claude Skill | Build structured AI prompts using the R·T·C·F·R·R framework — CV, LinkedIn, outreach, CareerForge |
+| rtcfrr-prompt | `skills/rtcfrr-prompt/` | Claude Skill | Build structured AI prompts using the R·T·C·F·R·R framework — CV, LinkedIn, outreach, CareerForge |
 | json-prompt-builder | `skills/json-prompt-builder/` | Claude Skill | Build JSON prompts for AI workflows, n8n nodes, and automation pipelines |
 | n8n+claudedesktop | `skills/n8n+claudedesktop/` | Claude Skill | Connect n8n to Claude Web and Desktop — OS-specific config paths, token setup, workflow publishing, troubleshooting |
 | canvas-design | `skills/canvas-design/` | Claude Skill | Create visual designs as .png and .pdf using design philosophy methodology |
@@ -50,6 +50,15 @@ All skills live under a single directory: `skills/[skill-name]/SKILL.md`.
 | script-prep-public | `skills/script-prep-public/` | Claude Code Skill | Turn one already-filmed, already-scripted piece into a final approved script from the best takes |
 | video-editing-public | `skills/video-editing-public/` | Claude Code Skill | Cut and caption talking-head reels in Descript via the Descript MCP, from an approved keep-script |
 | watch | `skills/watch/` | Claude Code Skill | Watch a video (URL or local path) via yt-dlp/ffmpeg and answer questions about what's in it |
+| social-content | `skills/social-content/` | Claude Skill | Create, schedule, and repurpose social content for LinkedIn, X, Instagram, TikTok, and Facebook |
+| signup-flow-cro | `skills/signup-flow-cro/` | Claude Skill | Optimise signup, registration, and trial activation flows |
+| schema-markup | `skills/schema-markup/` | Claude Skill | Add and fix JSON-LD structured data for rich results — FAQ, product, review, breadcrumb schema |
+| referral-program | `skills/referral-program/` | Claude Skill | Design and analyse referral, affiliate, and word-of-mouth programs |
+| product-marketing-context | `skills/product-marketing-context/` | Claude Skill | Foundation skill — builds `.agents/product-marketing-context.md` that other skills read for product/ICP/positioning context |
+| popup-cro | `skills/popup-cro/` | Claude Skill | Design and optimise popups, modals, overlays, and announcement banners |
+| paywall-upgrade-cro | `skills/paywall-upgrade-cro/` | Claude Skill | Design in-app paywalls, upgrade screens, and upsell modals |
+| pricing-strategy | `skills/pricing-strategy/` | Claude Skill | SaaS pricing, packaging, and monetisation strategy — tiers, value metric, willingness to pay |
+| onboarding-cro | `skills/onboarding-cro/` | Claude Skill | Optimise post-signup onboarding, activation rate, and time-to-value |
 
 ---
 

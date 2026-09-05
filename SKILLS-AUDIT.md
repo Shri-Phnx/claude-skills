@@ -92,6 +92,27 @@ Dependencies carried over from §2 still apply — most notably, `video-editing-
 
 §1 and §2 above are left as the original 2026-09-03 snapshot; this entry is the delta.
 
+### 2026-09-05 — resolved the 10 naming mismatches from §1
+
+Compared each installed skill against its supposed repo counterpart by diffing actual file content (not just names), using the live `SKILL.md` files synced to this session. Verdict: all 10 are genuinely the same skill, but 9 of the 10 repo copies were stale, condensed stubs (the original short version pulled from `coreyhaines31/marketingskills`) while the installed, live version has since been expanded with fuller trigger phrases and step-by-step instructions. Renamed each repo folder to match the installed skill's canonical name and replaced its content with the live version:
+
+| Old repo folder | New repo folder | Content |
+|---|---|---|
+| `skills/social/` | `skills/social-content/` | Replaced with live version (47 → 409 lines) |
+| `skills/signup/` | `skills/signup-flow-cro/` | Replaced with live version (47 → 359 lines) |
+| `skills/schema/` | `skills/schema-markup/` | Replaced with live version (48 → 179 lines) |
+| `skills/referrals/` | `skills/referral-program/` | Replaced with live version (45 → 257 lines) |
+| `skills/product-marketing/` | `skills/product-marketing-context/` | Replaced with live version (37 → 241 lines) |
+| `skills/popups/` | `skills/popup-cro/` | Replaced with live version (43 → 454 lines) |
+| `skills/paywalls/` | `skills/paywall-upgrade-cro/` | Replaced with live version (42 → 227 lines) |
+| `skills/pricing/` | `skills/pricing-strategy/` | Replaced with live version (41 → 231 lines) |
+| `skills/onboarding/` | `skills/onboarding-cro/` | Replaced with live version (43 → 220 lines) |
+| `skills/rtcfrr-prompt-builder/` | `skills/rtcfrr-prompt/` | **Kept the repo's own content** — see note below |
+
+**One exception, the other way round:** `rtcfrr-prompt-builder` (repo) vs. `rtcfrr-prompt` (installed) was the opposite case — the two are nearly identical (213 vs. 214 lines), but the *installed* live skill still says "Sparx-specific defaults" while the repo copy had already been corrected to "Shrinivas-specific defaults." Here the repo was ahead, not behind. Renamed the folder to `rtcfrr-prompt` to match the live skill's name, kept the repo's corrected wording, and did **not** overwrite it with the installed content. Worth re-uploading this corrected version back to the live skill in your Claude settings so the two stay in sync going forward.
+
+README's skill index updated to match: the `rtcfrr-prompt-builder` row was renamed, and the other nine were added as new rows (they weren't in the curated table before).
+
 ---
 
 ## Notes
