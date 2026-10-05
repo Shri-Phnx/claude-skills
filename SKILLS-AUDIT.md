@@ -115,6 +115,23 @@ README's skill index updated to match: the `rtcfrr-prompt-builder` row was renam
 
 ---
 
+## 5. 2026-10-05 — README rebuilt around Shrinivas's full laptop catalog
+
+Important scope correction: everything in §1–§4 above was based on this cloud session's account-level skill sync, which only reflects skills that sync to the Claude account — it has no visibility into skills/plugins installed locally via Claude Code on a laptop unless they also sync. Confirmed this gap directly: Shrinivas reported installing skills on his laptop that weren't visible here, and a manual check found the account-sync cache this session relies on was dated 2026-09-03, over a month stale.
+
+Shrinivas supplied his own master tracking spreadsheet (`Claude_Skills_and_Plugins.xlsx`, 130 real rows) covering every Claude skill, plugin, and adjacent tool he's evaluated — built from his own testing on his laptop, including real install-success/failure notes (e.g. "repo has no `.claude-plugin/marketplace.json`"). This is a far more complete and accurate record than anything derivable from this session alone, so the README's **Skill Index** section was replaced wholesale with this catalog, in his exact 11-column format (Claude Category, Name, GitHub Link, Skill/Plugin List, Purpose, Any Dependencies?, Dependency, Steps to Complete Install Successfully, Status, Claude Code Command, Suggested Install Command).
+
+**Cross-check against this repo's `skills/` folder** (the 36 rows marked `Installed`):
+- 2 already covered: `Marketing Skills (Corey Haines)` (`coreyhaines31/marketingskills` — the source of ~40 skills already under `skills/`) and `Anthropic Skills` (`anthropics/skills` — the source of this session's built-in skills like docx/pdf/pptx/xlsx/canvas-design/mcp-builder, which don't need their own `skills/` folder since Claude Code ships them directly).
+- 34 not yet backed up here at all: `21st MCP`, `Agent Skills (by Addy Osmani)`, `ECC`, `Claude SEO`, `claude-skills (by alirezarezvani)`, `Arxitect`, `Claude Plugins (Official)`, `claude-reflect`, `Humanizer`, `career-ops`, `Chrome DevTools MCP`, `Product Manager Skills`, `Ponytail`, `OpenSEO`, `Firecrawl`, `gstack`, `Graphify`, `Claude Remotion Skill`, `Hyperframes (HeyGen)`, `CLI-Anything`, `AI Website Cloner Template`, `Taste Skill`, `AI Job Search`, `Skills for Real Engineers`, `Playwright CLI`, `Anthropic Cybersecurity Skills`, `last30days`, `Superpowers`, `Agent Reach`, `Impeccable`, `AI Engineering From Scratch`, `YouTube Shorts Pipeline`, `Claude-Mem`, `GEO SEO Claude`.
+- Most of the 34 are **plugins** (install via `claude plugin marketplace add <owner>/<repo>` against their own GitHub repo) — for these, the recorded link + command in the table *is* the backup; there's no local file to vendor.
+- A smaller set are plain **skills** whose `SKILL.md` could actually be pulled from GitHub and added to `skills/` the way earlier batches were: `Humanizer`, `career-ops`, `Graphify`, `Claude Remotion Skill`, `Hyperframes (HeyGen)`, `AI Website Cloner Template`, `Taste Skill`, `Impeccable`, `AI Engineering From Scratch`, `YouTube Shorts Pipeline`, `Anthropic Cybersecurity Skills`. Not done yet — flagged as a possible next pass.
+- 2 partial installs (`AI News Briefing`, `LinkedIn Skills`) and 5 failed installs are preserved as-is from Shrinivas's own notes — not re-verified independently.
+
+This correction also resolves the earlier "Taste Skill" / "Playwright CLI" question from this conversation: both were reported as not installed anywhere reachable from this session, which was accurate for session-visible sources at the time but wrong in the broader sense — his own catalog shows both are genuinely installed on his laptop.
+
+---
+
 ## Notes
 
 - "Installed" here means visible in the live session's skill manifest at the time of this audit — session-specific, not a permanent record.
