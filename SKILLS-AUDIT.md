@@ -161,6 +161,25 @@ Each vendored as SKILL.md plus any small reference `.md`/text files it directly 
 
 ---
 
+## 7. 2026-10-05 — vendored 4 of the 6 skill-library repos from §6
+
+Shrinivas chose to vendor `Impeccable`, `Taste Skill`, `career-ops`, and `AI Engineering From Scratch` from §6's list, leaving `Hyperframes (HeyGen)` and `Anthropic Cybersecurity Skills` (40 and 818 skills respectively) out for now.
+
+Re-cloned all 4 and found the first two were smaller than §6's headline counts suggested — the raw `find`-by-name count was misleading because the same skill is duplicated once per supported AI tool (`.claude/skills/`, `.cursor/skills/`, `.gemini/skills/`, etc., all near-identical copies with only a tool-specific path string changed):
+
+- **`career-ops`**: genuinely a single skill. Vendored the `.claude/skills/career-ops/SKILL.md` copy (confirmed byte-identical to the `.cursor` copy) → `skills/career-ops/SKILL.md`.
+- **`Impeccable`**: also a single skill, but a substantial one — ships a compiled CLI launcher and a 49-file reference library it depends on to run (not optional). Vendored the whole `.claude/skills/impeccable/` tree (`SKILL.md` + `scripts/` + `reference/`, 1.8M) → `skills/impeccable/`. Confirmed the `.claude` variant is the correct one for this repo (the `.cursor` and `plugin` copies reference different path conventions in their instructions).
+- **`Taste Skill`**: genuinely a 13-skill pack, each already in its own folder (`brandkit`, `brutalist-skill`, `gpt-tasteskill`, `image-to-code-skill`, `imagegen-frontend-mobile`, `imagegen-frontend-web`, `minimalist-skill`, `output-skill`, `redesign-skill`, `soft-skill`, `stitch-skill`, `taste-skill`, `taste-skill-v1`). Vendored all 13 under `skills/taste-skill/<name>/`. Note: `image-to-code-skill` here is the real answer to the "Image to Code" question from earlier in this conversation — it exists, just inside this pack rather than standalone.
+- **`AI Engineering From Scratch`**: genuinely 22 distinct skills once the duplicate `.claude/skills/` tree is excluded — 10 core course skills (`learn`, `course-guide`, `start-learning`, `build-project`, etc.) plus 12 skills that are themselves outputs/examples from specific course exercises (`skill-contract-reviewer`, `skill-release-gate`, `release-publish`, `benign`, etc.). Vendored all 22 under `skills/ai-engineering-from-scratch/<name>/` rather than cherry-picking, since the exercise-output ones are still real, usable skills, not placeholders.
+
+**Security note carried over from Shrinivas's own catalog:** his tracking sheet flagged `claude-certification` (one of the 22 AI Engineering From Scratch skills, now at `skills/ai-engineering-from-scratch/claude-certification/`) with "Snyk Critical Risk, review before use." Not independently re-verified here — flagging forward as-is. Review before enabling that specific skill.
+
+Total added: 120 files, ~3.1M (career-ops 20K, Taste Skill 380K, AI Engineering From Scratch 516K, Impeccable 2.2M) — far smaller than §6's worst-case estimate once the per-tool duplication was accounted for.
+
+`Hyperframes (HeyGen)` and `Anthropic Cybersecurity Skills` remain reference-only (GitHub link + install command in the README catalog), not vendored.
+
+---
+
 ## Notes
 
 - "Installed" here means visible in the live session's skill manifest at the time of this audit — session-specific, not a permanent record.
