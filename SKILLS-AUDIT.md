@@ -132,6 +132,35 @@ This correction also resolves the earlier "Taste Skill" / "Playwright CLI" quest
 
 ---
 
+## 6. 2026-10-05 — vendored the 5 genuinely single-skill repos from §5's gap list
+
+Cloned all 11 repos named in §5's "plain skills" list to check their actual structure before copying anything. Finding: only 5 of the 11 are truly a single skill. The other 6 turned out to be entire skill *libraries*, not single skills:
+
+| Repo | SKILL.md count | Size |
+|---|---|---|
+| `anthropic-cybersecurity-skills` | 818 | 60M |
+| `hyperframes` (HeyGen) | 40 | 301M |
+| `ai-engineering-from-scratch` | 32 | 130M |
+| `impeccable` | 24 | 84M |
+| `career-ops` | 13 | 88M |
+| `taste-skill` | 13 | 9.5M |
+
+Copying all of those in full would take this repo from ~86 skills to over 1,000 files and roughly 670MB — a different kind of repo than what exists today. Held off on those pending Shrinivas's call on how to handle them (vendor everything, vendor a curated subset, or leave as GitHub-link-only reference the way plugins already are in the README catalog).
+
+The remaining 5 were genuinely one skill each and were vendored directly:
+
+| Name | New repo path | Source |
+|---|---|---|
+| `humanizer` | `skills/humanizer/SKILL.md` | `blader/humanizer` |
+| `clone-website` | `skills/clone-website/SKILL.md` | `JCodesMore/ai-website-cloner-template` (`.agents/skills/clone-website/SKILL.md`) |
+| `verticals` (repo: youtube-shorts-pipeline) | `skills/youtube-shorts-pipeline/SKILL.md` + `references/` | `rushindrasinha/youtube-shorts-pipeline` |
+| `remotion-motion-graphics` (repo: claude-remotion-skill) | `skills/claude-remotion-skill/SKILL.md` + `references/` | `haidrrrry/claude-remotion-skill` (`remotion-motion-graphics/SKILL.md`) |
+| `graphify` | `skills/graphify/SKILL.md` | `Graphify-Labs/graphify` (`graphify/skill.md`, the generic/all-agent version — there is no Claude-specific top-level file, only a `skills/claude/references/` folder with no SKILL.md of its own) |
+
+Each vendored as SKILL.md plus any small reference `.md`/text files it directly points to — not the surrounding app, video assets, or build tooling from the source repo (e.g. `claude-remotion-skill`'s demo.mp4 and example videos were left out; `ai-website-cloner-template`'s full Next.js template app was left out, just the skill instructions were taken).
+
+---
+
 ## Notes
 
 - "Installed" here means visible in the live session's skill manifest at the time of this audit — session-specific, not a permanent record.
