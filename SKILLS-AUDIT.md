@@ -180,6 +180,23 @@ Total added: 120 files, ~3.1M (career-ops 20K, Taste Skill 380K, AI Engineering 
 
 ---
 
+## 8. 2026-10-06 — Agency Agents: verified live, corrected the catalog, vendored as `agents/`
+
+Shrinivas's catalog listed `Agency Agents` (`msitarzewski/agency-agents`) as "Not installed - repo has no valid SKILL.md files (npx skills found nothing)". That check was testing the wrong thing: this repo isn't Skills format at all — it's **Claude Code subagents** (`~/.claude/agents/`), a separate mechanism from Skills (`~/.claude/skills/`). `npx skills` correctly found nothing, because there's nothing in the format it looks for.
+
+Verified the real install path directly:
+1. Cloned the repo and ran `./scripts/install.sh --tool claude-code --dry-run` → reported 282 agents across 18 teams, no errors.
+2. Ran it for real into an isolated sandbox config dir → 282 agents copied cleanly, confirmed on disk.
+3. Walked Shrinivas through running the same install on his own Windows laptop (Git Bash/MSYS2 UCRT64). First attempt failed on a paste-garbling issue specific to his terminal (stray escape sequences from pasting multiple lines at once, then a stray `~` appended to `claude-code` on a retry) — not a problem with the repo or the script. Once he typed the command cleanly with `--no-interactive`, it installed successfully: **273 agents landed in `~/.claude/agents/`** (count differs slightly from this session's 282 because the upstream repo received a few commits between the two clones — not an error).
+
+Updated based on this:
+- **README catalog table**: Agency Agents' Category changed from "Claude Plugin / agent pack" to "Claude Code subagent pack" (more accurate — it has no `.claude-plugin/marketplace.json`, so `claude plugin marketplace add` doesn't apply to it either, unlike what the original "Suggested Install Command" column implied). Status changed to confirmed-working with today's date and the real install command.
+- **Vendored** a fresh pull (282 agents, this session's clone) into `agents/agency-agents/` — flat, matching exactly what the install script copies to `~/.claude/agents/`, not the source repo's by-division folder layout (which mixes in non-agent docs like README/CONTRIBUTING/strategy files that the installer itself filters out).
+- This is the **first entry under a new top-level `agents/` directory**, kept separate from `skills/` since Claude Code subagents and Claude Skills are different features with different install locations. README's Folder Structure section updated to show both.
+- Corrected the §5/§6 "not yet backed up" list in the README, which had gone stale after §6/§7 vendored 9 of the original 34 skills — it still listed them as outstanding.
+
+---
+
 ## Notes
 
 - "Installed" here means visible in the live session's skill manifest at the time of this audit — session-specific, not a permanent record.
