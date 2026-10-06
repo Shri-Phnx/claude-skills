@@ -197,6 +197,22 @@ Updated based on this:
 
 ---
 
+## 9. 2026-10-06 — found and resolved a duplicate: the §7 taste-skill vendor collided with a Sept 4 commit already on `main`
+
+Checking branch divergence found that `main` was 1 commit ahead of this branch: `d8b061c`, "Add 13 taste-skill plugin sub-skills installed in Claude but missing from repo," pushed by Shrinivas directly on **2026-09-04** — before this conversation's work started, from a separate session. It added the same 13 skills vendored in §7's `AI Engineering From Scratch`/`Taste Skill` pass, but at `skills/<name>/` (flat, e.g. `skills/brandkit/`, `skills/image-to-code/`) using the skill's own `name:` field as the folder name, versus this branch's `skills/taste-skill/<name>/` (nested under the source-repo name, e.g. `skills/taste-skill/brandkit/`, `skills/taste-skill/image-to-code-skill/`).
+
+First flagged this to Shrinivas as a possible content conflict before touching anything, since the two copies looked very different in size by `du -sh` (which turned out to be measuring directory overhead, not file content). Diffed every one of the 13 pairs properly: **all 13 were byte-identical, 0 differing lines each.** Same skill text in both places — purely a location/naming duplication, not a content fork.
+
+Resolution:
+- Merged `origin/main` into this branch (commit `79a2da7`).
+- Kept main's flat `skills/<name>/` layout — already live, matches the convention every other skill in this repo uses, one skill one folder, no extra nesting level.
+- Deleted the duplicate `skills/taste-skill/` tree this branch had added, after copying the one genuinely extra file it had — `stitch-skill/DESIGN.md`, which main's copy was missing — over to `skills/stitch-design-taste/DESIGN.md`.
+- README merge conflict: kept this branch's master catalog (the format Shrinivas explicitly asked for in place of the old Skill Index) over main's edit to the now-superseded old-format table.
+
+Net effect: repo content unchanged (same 13 skills, same text), just one copy instead of two, at the path main had already established. `skills/` now has 107 top-level entries, 128 `SKILL.md` files total (some packs like `ai-engineering-from-scratch` nest several).
+
+---
+
 ## Notes
 
 - "Installed" here means visible in the live session's skill manifest at the time of this audit — session-specific, not a permanent record.
